@@ -1,0 +1,2910 @@
+/* ==========================================================================
+   CSS VARIABLES & DESIGN SYSTEM (JV PRECISION — HIGH-ENERGY ANIME AESTHETIC)
+   ========================================================================== */
+:root {
+  /* Official JV PRECISION Brand Core Palette */
+  --brand-green: #00ef4b;               /* Electric Lime Green (Primary Accent) */
+  --brand-emerald: #087f38;             /* Shadow Emerald */
+  --brand-purple: #b408d3;              /* Rich Violet / Deep Magenta */
+  --brand-magenta: #f720f9;             /* Vivid Cyber Magenta (Secondary Accent) */
+  --brand-titanium: #dbdadb;            /* Titanium Crisp Platinum White */
+  
+  /* Primary & Secondary Neon Theme Tokens (Harmonized to Logo Theme) */
+  --blue-neon: #00ef4b;                 /* Mapped: Primary Electric Lime */
+  --blue-electric: #f720f9;             /* Mapped: Secondary Cyber Magenta */
+  --blue-core: #087f38;                 /* Mapped: Deep Emerald Shadow */
+  --blue-glow: rgba(0, 239, 75, 0.45);  /* Radiant Green Glow */
+  --blue-shadow: rgba(247, 32, 249, 0.35); /* Cyber Magenta Glow */
+  --brand-glow-green: rgba(0, 239, 75, 0.45);
+  --brand-glow-magenta: rgba(247, 32, 249, 0.4);
+  
+  --border-tech: rgba(0, 239, 75, 0.3);
+  --border-bright: rgba(0, 239, 75, 0.8);
+  --border-magenta: rgba(247, 32, 249, 0.7);
+
+  /* Deep Anime Obsidian & Carbon Void Backgrounds */
+  --bg-abyss: #030408;
+  --bg-deep: #060810;
+  --bg-card: #0a0d18;
+  --bg-card-hover: #111628;
+  --ink-primary: #ffffff;
+  --ink-secondary: #dbdadb;
+  --ink-muted: #7b8096;
+
+  --font-display: 'Bebas Neue', 'Teko', sans-serif;
+  --font-heading: 'Teko', 'Bebas Neue', sans-serif;
+  --font-body: 'Barlow Condensed', 'Rajdhani', sans-serif;
+  --font-tech: 'Rajdhani', monospace;
+  --chrome-bg: #060810;
+  --chrome-bar: #0a0d18;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  background-color: #030408;
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 18% 12%, rgba(0, 239, 75, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 24%, rgba(247, 32, 249, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 0%, #0c1220 0%, #04060b 55%, #020306 100%);
+  color: var(--ink-primary);
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background speed lines & manga dot grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(0, 239, 75, 0.14) 1px, transparent 1px),
+    linear-gradient(to right, rgba(219, 218, 219, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px, 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient anime glow flare in brand dual-tones */
+body::after {
+  content: "";
+  position: fixed;
+  top: -15%;
+  left: 25%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, rgba(0, 239, 75, 0.09) 0%, rgba(247, 32, 249, 0.05) 50%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   MAIN PORTFOLIO WRAPPER
+   ========================================================================== */
+.portfolio-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ==========================================================================
+   SITE HEADER & NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 12, 27, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 2px solid var(--border-tech);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.45rem 2.8rem 0.45rem 1.4rem;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(0, 239, 75, 0.12) 0%, rgba(247, 32, 249, 0.18) 50%, rgba(13, 26, 64, 0.75) 100%);
+  border-right: 2px solid var(--brand-green);
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand-logo:hover {
+  background: linear-gradient(135deg, rgba(0, 239, 75, 0.25) 0%, rgba(247, 32, 249, 0.35) 100%);
+  box-shadow: 0 0 28px rgba(0, 239, 75, 0.35);
+}
+
+.brand-horizontal-img {
+  height: 44px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0, 239, 75, 0.4)) drop-shadow(0 0 14px rgba(247, 32, 249, 0.3));
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+}
+
+.brand-logo:hover .brand-horizontal-img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 14px rgba(0, 239, 75, 0.8)) drop-shadow(0 0 22px rgba(247, 32, 249, 0.7));
+}
+
+.brand-crest-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 8px var(--brand-magenta));
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover .brand-crest-icon {
+  transform: rotate(20deg) scale(1.1);
+}
+
+.brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  line-height: 0.95;
+  text-shadow: 0 0 12px rgba(0, 239, 75, 0.4);
+}
+
+.brand-name .brand-jv {
+  color: var(--brand-magenta);
+  text-shadow: 0 0 12px var(--brand-glow-magenta);
+}
+
+.brand-name .brand-precision {
+  color: var(--brand-green);
+  text-shadow: 0 0 12px var(--brand-glow-green);
+}
+
+.brand-dot {
+  color: var(--brand-green);
+  text-shadow: 0 0 14px var(--brand-green);
+}
+
+.brand-tag {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--brand-green);
+  line-height: 1;
+  margin-top: 3px;
+}
+
+.nav-right-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.8rem);
+  padding-right: 1.5rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3.5vw, 2.8rem);
+  padding: 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--ink-secondary);
+  position: relative;
+  padding: 0.3rem 0;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.site-nav a::before {
+  content: "//";
+  font-size: 0.8em;
+  color: var(--border-tech);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--blue-neon);
+  box-shadow: 0 0 12px var(--blue-neon);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(0, 239, 75, 0.75);
+}
+.site-nav a:hover::before,
+.site-nav a.active::before {
+  opacity: 1;
+  color: var(--brand-magenta);
+  transform: translateX(0);
+}
+.site-nav a:hover::after,
+.site-nav a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ==========================================================================
+   COMMON SECTION STYLING & TITLES
+   ========================================================================== */
+section {
+  position: relative;
+  border-bottom: 2px solid var(--border-tech);
+  overflow: hidden;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.2rem, 3.5vw, 2.5rem);
+}
+
+.section-header {
+  margin-bottom: 2.2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  letter-spacing: 0.03em;
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  line-height: 1;
+}
+
+.sec-title::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 0.85em;
+  background: var(--blue-neon);
+  box-shadow: 0 0 14px var(--blue-neon);
+  transform: skewX(-22deg);
+  margin-right: 0.4rem;
+}
+
+.sec-title small {
+  font-family: var(--font-body);
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--blue-neon);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sec-subtitle-tag {
+  display: inline-block;
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.12em;
+  margin-top: 0.3rem;
+  padding-left: 1.8rem;
+}
+
+/* ==========================================================================
+   PANEL 1 — HERO SECTION WITH STRUCTURED BROKEN SHARD FRAME
+   ========================================================================== */
+#home {
+  background:
+    radial-gradient(circle at 30% 50%, rgba(0, 239, 75, 0.08) 0%, transparent 60%),
+    repeating-linear-gradient(120deg, transparent 0, transparent 40px, rgba(0, 239, 75, 0.02) 40px, rgba(0, 239, 75, 0.02) 42px);
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   HERO STAGE — The broken shard frame + character placeholder
+   ============================================================ */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Kinetic shockwave click animation & Violent Recoil Screenshake */
+@keyframes epicHeroRumble {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  10%  { transform: translate(-14px, 10px) scale(1.035) rotate(-1.5deg); }
+  22%  { transform: translate(16px, -12px) scale(0.975) rotate(1.8deg); }
+  35%  { transform: translate(-10px, 8px) scale(1.02) rotate(-1deg); }
+  48%  { transform: translate(9px, -7px) scale(0.99) rotate(0.7deg); }
+  62%  { transform: translate(-6px, 5px) scale(1.008) rotate(-0.4deg); }
+  78%  { transform: translate(3px, -3px) scale(0.998) rotate(0.2deg); }
+  90%  { transform: translate(-1px, 1px) scale(1.002) rotate(-0.1deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+.hero-stage.shard-shockwave {
+  animation: epicHeroRumble 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3-Phase Interactive Glass Shatter System */
+.hero-stage:not(.is-shattered) .hero-bg-glass-svg,
+.hero-stage:not(.is-shattered) .hero-fg-glass-svg {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.hero-stage.is-shattered .hero-bg-glass-svg,
+.hero-stage.is-shattered .hero-fg-glass-svg {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+/* Central Pentagon Super-Charge Pulse when shattered */
+.hero-stage.just-shattered #heroDropZone {
+  animation: pentagonSuperCharge 0.9s cubic-bezier(0.14, 1.18, 0.35, 1) forwards;
+}
+
+@keyframes pentagonSuperCharge {
+  0% {
+    transform: scale(0.8);
+    filter: brightness(3.2) drop-shadow(0 0 55px #00ef4b) drop-shadow(0 0 90px #f720f9);
+  }
+  28% {
+    transform: scale(1.1);
+    filter: brightness(2) drop-shadow(0 0 40px #00ef4b);
+  }
+  65% {
+    transform: scale(0.98);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Expanding Kinetic Energy Shockwave Rings */
+.hero-shatter-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130px;
+  height: 130px;
+  margin-top: -65px;
+  margin-left: -65px;
+  border-radius: 50%;
+  border: 3.5px solid #00ef4b;
+  box-shadow: 0 0 30px #00ef4b, inset 0 0 25px #00ef4b, 0 0 60px rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 28;
+}
+
+.hero-shatter-shockwave.alt {
+  border-color: #f720f9;
+  box-shadow: 0 0 35px #f720f9, inset 0 0 25px #f720f9, 0 0 65px rgba(247, 32, 249, 0.85);
+}
+
+.hero-stage.just-shattered .hero-shatter-shockwave {
+  animation: shockwaveExpand 0.85s cubic-bezier(0.12, 0.9, 0.22, 1) forwards;
+}
+
+.hero-stage.just-shattered .hero-shatter-shockwave.alt {
+  animation: shockwaveExpandAlt 0.95s cubic-bezier(0.14, 0.88, 0.28, 1) 0.05s forwards;
+}
+
+@keyframes shockwaveExpand {
+  0% {
+    opacity: 1;
+    transform: scale(0.15) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(5.2) rotate(30deg);
+  }
+}
+
+@keyframes shockwaveExpandAlt {
+  0% {
+    opacity: 1;
+    transform: scale(0.1) rotate(0deg);
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(6) rotate(-40deg);
+  }
+}
+
+/* Micro-Debris & Glass Shrapnel Particles */
+.hero-debris-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.glass-shrapnel-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 1;
+  pointer-events: none;
+}
+
+@keyframes shrapnelFlight {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2) rotate(0deg);
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.2) rotate(var(--rot));
+  }
+}
+
+/* ============================================================
+   MAANGAS 360° EXPLOSIVE SHARD TRAJECTORIES (Radial Blast!)
+   Shards violently explode outward from center impact point,
+   spring past resting boundaries, and lock with elastic tension!
+   ============================================================ */
+
+/* 1. Shard F1 (Top-Left Slab) */
+.hero-stage.just-shattered .shard-f1 {
+  animation: explodeShardF1 0.92s cubic-bezier(0.14, 1.18, 0.32, 1) forwards;
+}
+@keyframes explodeShardF1 {
+  0% {
+    opacity: 0;
+    transform: translate(-180px, -140px) scale(0.35) rotate(-32deg);
+    filter: brightness(3.8) drop-shadow(0 0 50px #00ef4b);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(-35px, -26px) scale(1.15) rotate(-4deg);
+    filter: brightness(2.2) drop-shadow(0 0 40px #ffffff);
+  }
+  65% {
+    transform: translate(7px, 5px) scale(0.97) rotate(0.9deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+/* 2. Shard F2 (Top-Right Slanted Slab) */
+.hero-stage.just-shattered .shard-f2 {
+  animation: explodeShardF2 0.9s cubic-bezier(0.14, 1.18, 0.32, 1) 0.02s forwards;
+}
+@keyframes explodeShardF2 {
+  0% {
+    opacity: 0;
+    transform: translate(150px, -150px) scale(0.35) rotate(28deg);
+    filter: brightness(3.8) drop-shadow(0 0 50px #f720f9);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(30px, -22px) scale(1.14) rotate(3.5deg);
+    filter: brightness(2.2) drop-shadow(0 0 40px #ffffff);
+  }
+  65% {
+    transform: translate(-6px, 4px) scale(0.97) rotate(-0.6deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+/* 3. Shard F3 (Top-Right Corner Flake) */
+.hero-stage.just-shattered .shard-f3 {
+  animation: explodeShardF3 0.94s cubic-bezier(0.14, 1.18, 0.32, 1) 0.04s forwards;
+}
+@keyframes explodeShardF3 {
+  0% {
+    opacity: 0;
+    transform: translate(190px, -100px) scale(0.28) rotate(38deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #00ef4b);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(36px, -15px) scale(1.16) rotate(4.5deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(-7px, 3px) scale(0.97) rotate(-0.7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 4. Shard F4 (Upper-Left Angled Slab) */
+.hero-stage.just-shattered .shard-f4 {
+  animation: explodeShardF4 0.88s cubic-bezier(0.14, 1.18, 0.32, 1) 0.02s forwards;
+}
+@keyframes explodeShardF4 {
+  0% {
+    opacity: 0;
+    transform: translate(-180px, -45px) scale(0.32) rotate(-26deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #f720f9);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(-32px, -8px) scale(1.12) rotate(-2.5deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(6px, 2px) scale(0.98) rotate(0.6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 5. Shard FG-Left (MID-LEFT GIANT HERO BLADE — The razor-sharp centerpiece) */
+.hero-stage.just-shattered .shard-fg-left {
+  animation: explodeShardFgLeft 0.98s cubic-bezier(0.12, 1.28, 0.28, 1) forwards;
+}
+@keyframes explodeShardFgLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-240px, 45px) scale(0.28) rotate(-38deg);
+    filter: brightness(5) drop-shadow(0 0 70px #00ef4b) drop-shadow(0 0 100px #ffffff);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50px, 10px) scale(1.22) rotate(-5deg);
+    filter: brightness(2.4) drop-shadow(0 0 50px #00ef4b);
+  }
+  68% {
+    transform: translate(9px, -3px) scale(0.95) rotate(1.2deg);
+    filter: brightness(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+/* 6. Shard FG-Right (MID-RIGHT PIERCING DAGGER — Sharp piercing edge) */
+.hero-stage.just-shattered .shard-fg-right {
+  animation: explodeShardFgRight 0.98s cubic-bezier(0.12, 1.28, 0.28, 1) 0.03s forwards;
+}
+@keyframes explodeShardFgRight {
+  0% {
+    opacity: 0;
+    transform: translate(240px, -35px) scale(0.28) rotate(38deg);
+    filter: brightness(5) drop-shadow(0 0 70px #f720f9) drop-shadow(0 0 100px #ffffff);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(50px, -8px) scale(1.22) rotate(5deg);
+    filter: brightness(2.4) drop-shadow(0 0 50px #f720f9);
+  }
+  68% {
+    transform: translate(-9px, 3px) scale(0.95) rotate(-1.2deg);
+    filter: brightness(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+/* 7. Shard F5 (Bottom-Right Scalene Triangle) */
+.hero-stage.just-shattered .shard-f5 {
+  animation: explodeShardF5 0.92s cubic-bezier(0.14, 1.18, 0.32, 1) 0.04s forwards;
+}
+@keyframes explodeShardF5 {
+  0% {
+    opacity: 0;
+    transform: translate(170px, 160px) scale(0.32) rotate(26deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #00ef4b);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(32px, 26px) scale(1.14) rotate(3.2deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(-6px, -4px) scale(0.97) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 8. Shard F6 (Far Bottom-Right Corner) */
+.hero-stage.just-shattered .shard-f6 {
+  animation: explodeShardF6 0.95s cubic-bezier(0.14, 1.18, 0.32, 1) 0.05s forwards;
+}
+@keyframes explodeShardF6 {
+  0% {
+    opacity: 0;
+    transform: translate(200px, 180px) scale(0.28) rotate(32deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #f720f9);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(36px, 30px) scale(1.15) rotate(4.2deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(-7px, -5px) scale(0.97) rotate(-0.6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 9. Shard F7 (Bottom-Left Long Spike Blade) */
+.hero-stage.just-shattered .shard-f7 {
+  animation: explodeShardF7 0.94s cubic-bezier(0.14, 1.18, 0.32, 1) 0.03s forwards;
+}
+@keyframes explodeShardF7 {
+  0% {
+    opacity: 0;
+    transform: translate(-150px, 190px) scale(0.28) rotate(-32deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #00ef4b);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(-28px, 32px) scale(1.14) rotate(-3.5deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(6px, -5px) scale(0.97) rotate(0.7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 10. Shard F8 (Lower-Left Scalene Triangle) */
+.hero-stage.just-shattered .shard-f8 {
+  animation: explodeShardF8 0.9s cubic-bezier(0.14, 1.18, 0.32, 1) 0.02s forwards;
+}
+@keyframes explodeShardF8 {
+  0% {
+    opacity: 0;
+    transform: translate(-130px, 130px) scale(0.32) rotate(-20deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #f720f9);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(-24px, 22px) scale(1.12) rotate(-2.4deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(5px, -4px) scale(0.98) rotate(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* 11. Shard F9 (Bottom Floating Dagger) */
+.hero-stage.just-shattered .shard-f9 {
+  animation: explodeShardF9 0.92s cubic-bezier(0.14, 1.18, 0.32, 1) 0.04s forwards;
+}
+@keyframes explodeShardF9 {
+  0% {
+    opacity: 0;
+    transform: translate(25px, 210px) scale(0.28) rotate(25deg);
+    filter: brightness(3.8) drop-shadow(0 0 45px #00ef4b);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(5px, 35px) scale(1.15) rotate(2.5deg);
+    filter: brightness(2);
+  }
+  65% {
+    transform: translate(-3px, -7px) scale(0.97) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* Living Floating Ambient Hover for Post-Shatter Shards */
+.hero-stage.is-shattered:not(.just-shattered) .shard-fg-left {
+  animation: shardFloatBladeLeft 4.5s ease-in-out infinite alternate;
+}
+.hero-stage.is-shattered:not(.just-shattered) .shard-fg-right {
+  animation: shardFloatBladeRight 5s ease-in-out infinite alternate;
+}
+
+@keyframes shardFloatBladeLeft {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(-5px, -6px, 0) rotate(-0.8deg); }
+}
+
+@keyframes shardFloatBladeRight {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(6px, -5px, 0) rotate(0.8deg); }
+}
+
+/* Intact Glass Strike Pane Overlay */
+.hero-intact-glass-pane {
+  position: absolute;
+  inset: -15px;
+  z-index: 25;
+  border-radius: 24px;
+  cursor: crosshair;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-stage.is-shattered .hero-intact-glass-pane {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.15);
+  visibility: hidden;
+}
+
+/* Intact Glass Surface */
+.intact-glass-surface {
+  position: absolute;
+  inset: 15px;
+  background: radial-gradient(circle at 45% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 239, 75, 0.03) 40%, rgba(9, 17, 41, 0.4) 85%);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: 
+    inset 0 0 35px rgba(255, 255, 255, 0.09),
+    inset 0 0 20px rgba(0, 239, 75, 0.15),
+    0 14px 40px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.intact-glass-shine {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.18) 48%, rgba(255, 255, 255, 0.35) 50%, rgba(0, 239, 75, 0.12) 53%, transparent 60%);
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: glassSheenPan 6s ease-in-out infinite alternate;
+}
+
+@keyframes glassSheenPan {
+  0% { transform: translateY(-40px) rotate(25deg); opacity: 0.7; }
+  100% { transform: translateY(40px) rotate(25deg); opacity: 1; }
+}
+
+/* Crack Fracture SVG */
+.hero-cracks-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+
+.crack-layer {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.hero-stage[data-glass-phase="1"] .crack-layer-p1 {
+  opacity: 1;
+}
+
+.hero-stage[data-glass-phase="2"] .crack-layer-p1,
+.hero-stage[data-glass-phase="2"] .crack-layer-p2 {
+  opacity: 1;
+}
+
+/* Glass Strike Flash */
+.glass-strike-flash {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(0, 239, 75, 0.45) 50%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.glass-strike-flash.flashing {
+  animation: strikeFlash 0.35s ease-out forwards;
+}
+
+@keyframes strikeFlash {
+  0% { opacity: 0.95; transform: scale(0.96); }
+  100% { opacity: 0; transform: scale(1.06); }
+}
+
+/* Strike Vibrations */
+@keyframes glassVibrateP1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-3px, 2px) rotate(-0.4deg); }
+  40% { transform: translate(3px, -2px) rotate(0.4deg); }
+  60% { transform: translate(-2px, 1px) rotate(-0.2deg); }
+  80% { transform: translate(1px, -1px) rotate(0.1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes glassVibrateP2 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  15% { transform: translate(-6px, 4px) rotate(-0.8deg) scale(1.02); }
+  30% { transform: translate(6px, -4px) rotate(0.8deg) scale(0.99); }
+  45% { transform: translate(-4px, 3px) rotate(-0.5deg); }
+  60% { transform: translate(4px, -2px) rotate(0.4deg); }
+  75% { transform: translate(-2px, 2px) rotate(-0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+.hero-stage.strike-p1 {
+  animation: glassVibrateP1 0.32s ease-out;
+}
+
+.hero-stage.strike-p2 {
+  animation: glassVibrateP2 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Hidden canvas (kept for parallax JS, renders nothing visible) */
+#threeHeroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Subtle radial glow behind the frame */
+.hero-energy-glow {
+  position: absolute;
+  inset: 5%;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(0, 239, 75, 0.16) 0%, 
+    rgba(30, 80, 200, 0.22) 40%, 
+    rgba(10, 25, 70, 0.35) 65%, 
+    transparent 80%);
+  filter: blur(35px);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  animation: pulseAura 6s ease-in-out infinite alternate;
+}
+@keyframes pulseAura {
+  0% { transform: scale(0.96); opacity: 0.75; }
+  100% { transform: scale(1.06); opacity: 1; }
+}
+
+/* ============================================================
+   AUTHENTIC BROKEN GLASS SHARDS SYSTEM (LAYER 1 & LAYER 3)
+   100% Code & Vectors — Translucent, Prismatic, Real Optical Depth
+   ============================================================ */
+.hero-bg-glass-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform; transform: translateZ(0);
+}
+
+.hero-fg-glass-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 30; /* Overlaps across pentagon border with 3D drop shadow! */
+  pointer-events: none;
+  will-change: transform; transform: translateZ(0);
+}
+
+/* ============================================================
+   KINETIC FLOAT, SPECULAR GLEAM & ZERO-G SHARD PHYSICS
+   Each shard has its own independent float curve + crystalline pulse
+   ============================================================ */
+.hero-glass-shard {
+  transform-box: fill-box;
+  transform-origin: center center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform; transform: translateZ(0); backface-visibility: hidden;
+}
+
+/* 1. Top-Left Sheet: Majestic slow drift */
+.shard-f1 {
+  animation: shardFloat1 8.5s ease-in-out infinite alternate, shardGleam 6.5s ease-in-out infinite 0.5s;
+}
+@keyframes shardFloat1 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(-4px, -6px, 0) rotate(-0.6deg); }
+  100% { transform: translate3d(3px, -2px, 0) rotate(0.4deg); }
+}
+
+/* 2. Top-Right Slab: Diagonal levitation */
+.shard-f2 {
+  animation: shardFloat2 7.6s ease-in-out infinite alternate 1.2s, shardGleam 7.0s ease-in-out infinite 2.0s;
+}
+@keyframes shardFloat2 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(5px, -4px, 0) rotate(0.7deg); }
+  100% { transform: translate3d(-3px, 3px, 0) rotate(-0.5deg); }
+}
+
+/* 3. Top-Right Corner Flake: Light buoyant flutter */
+.shard-f3 {
+  animation: shardFloat3 6.0s ease-in-out infinite alternate 0.8s, shardGleam 5.5s ease-in-out infinite 1.5s;
+}
+@keyframes shardFloat3 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(3px, -5px, 0) rotate(1.0deg); }
+  100% { transform: translate3d(-2px, 4px, 0) rotate(-0.8deg); }
+}
+
+/* 4. Upper-Left Trapezoid: Subtle lateral sway */
+.shard-f4 {
+  animation: shardFloat4 7.2s ease-in-out infinite alternate 1.8s, shardGleam 6.2s ease-in-out infinite 3.1s;
+}
+@keyframes shardFloat4 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(-5px, 3px, 0) rotate(-0.5deg); }
+  100% { transform: translate3d(2px, -4px, 0) rotate(0.6deg); }
+}
+
+/* 5. Bottom-Right Scalene Triangle: Deep gravitational swell */
+.shard-f5 {
+  animation: shardFloat5 9.2s ease-in-out infinite alternate 0.4s, shardGleam 8.0s ease-in-out infinite 4.0s;
+}
+@keyframes shardFloat5 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(4px, 5px, 0) rotate(0.6deg); }
+  100% { transform: translate3d(-3px, -4px, 0) rotate(-0.4deg); }
+}
+
+/* 6. Far Bottom-Right Corner: Ambient breathing */
+.shard-f6 {
+  animation: shardFloat6 8.0s ease-in-out infinite alternate 2.2s, shardGleam 7.5s ease-in-out infinite 1.0s;
+}
+@keyframes shardFloat6 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(5px, 3px, 0) rotate(-0.7deg); }
+  100% { transform: translate3d(-4px, -3px, 0) rotate(0.5deg); }
+}
+
+/* 7. Bottom-Left Long Spike: Downward angular suspension */
+.shard-f7 {
+  animation: shardFloat7 6.8s ease-in-out infinite alternate 1.0s, shardGleam 6.0s ease-in-out infinite 2.5s;
+}
+@keyframes shardFloat7 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(-4px, 6px, 0) rotate(-0.8deg); }
+  100% { transform: translate3d(3px, -2px, 0) rotate(0.5deg); }
+}
+
+/* 8. Lower-Left Sharp Scalene: Rhythmic rocking */
+.shard-f8 {
+  animation: shardFloat8 8.2s ease-in-out infinite alternate 2.5s, shardGleam 7.2s ease-in-out infinite 0.8s;
+}
+@keyframes shardFloat8 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(3px, -4px, 0) rotate(0.8deg); }
+  100% { transform: translate3d(-4px, 3px, 0) rotate(-0.6deg); }
+}
+
+/* 9. Bottom Dagger: Horizontal wave glide */
+.shard-f9 {
+  animation: shardFloat9 7.0s ease-in-out infinite alternate 1.5s, shardGleam 6.5s ease-in-out infinite 3.5s;
+}
+@keyframes shardFloat9 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(-3px, 4px, 0) rotate(-0.5deg); }
+  100% { transform: translate3d(4px, -3px, 0) rotate(0.7deg); }
+}
+
+/* FOREGROUND OVERLAPPING BLADES: Kinetic Front Hovering */
+.shard-fg-left {
+  animation: shardFgLeft 6.4s ease-in-out infinite alternate, fgGleam 5.8s ease-in-out infinite 1.0s;
+}
+@keyframes shardFgLeft {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(-3px, -5px, 0) rotate(-0.6deg); }
+  100% { transform: translate3d(2px, 3px, 0) rotate(0.4deg); }
+}
+
+.shard-fg-right {
+  animation: shardFgRight 7.0s ease-in-out infinite alternate 1.2s, fgGleam 6.2s ease-in-out infinite 3.2s;
+}
+@keyframes shardFgRight {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(4px, -4px, 0) rotate(0.6deg); }
+  100% { transform: translate3d(-3px, 3px, 0) rotate(-0.5deg); }
+}
+
+/* Specular Light Catching Glint Animation */
+@keyframes shardGleam {
+  0%, 100% {
+    filter: drop-shadow(0 0 1.0px rgba(56, 189, 248, 0.75)) drop-shadow(4px 10px 7px rgba(0,0,0,0.85));
+  }
+  50% {
+    filter: drop-shadow(0 0 3.5px rgba(0, 239, 75, 0.95)) drop-shadow(0 0 1.5px #ffffff) drop-shadow(4px 10px 10px rgba(0,0,0,0.95));
+  }
+}
+
+@keyframes fgGleam {
+  0%, 100% {
+    filter: drop-shadow(0 0 1.2px rgba(56, 189, 248, 0.8)) drop-shadow(5px 12px 9px rgba(0,0,0,0.92));
+  }
+  50% {
+    filter: drop-shadow(0 0 4.5px rgba(247, 32, 249, 1)) drop-shadow(0 0 2px #ffffff) drop-shadow(5px 14px 12px rgba(0,0,0,0.98));
+  }
+}
+
+/* Interactive Hover Reactions: Shards disperse outward when hovering hero stage */
+.hero-stage:hover .shard-f1  { transform: translate3d(-8px, -10px, 0) rotate(-1.2deg); }
+.hero-stage:hover .shard-f2  { transform: translate3d(10px, -8px, 0) rotate(1.2deg); }
+.hero-stage:hover .shard-f3  { transform: translate3d(12px, -6px, 0) rotate(1.5deg); }
+.hero-stage:hover .shard-f4  { transform: translate3d(-10px, 2px, 0) rotate(-1.0deg); }
+.hero-stage:hover .shard-f5  { transform: translate3d(8px, 10px, 0) rotate(1.0deg); }
+.hero-stage:hover .shard-f6  { transform: translate3d(10px, 8px, 0) rotate(1.2deg); }
+.hero-stage:hover .shard-f7  { transform: translate3d(-8px, 12px, 0) rotate(-1.5deg); }
+.hero-stage:hover .shard-f8  { transform: translate3d(-6px, 6px, 0) rotate(1.0deg); }
+.hero-stage:hover .shard-f9  { transform: translate3d(-2px, 10px, 0) rotate(-0.8deg); }
+.hero-stage:hover .shard-fg-left  { transform: translate3d(-6px, -4px, 0) rotate(-0.8deg); }
+.hero-stage:hover .shard-fg-right { transform: translate3d(7px, -3px, 0) rotate(0.8deg); }
+
+/* ============================================================
+   HERO CHARACTER PLACEHOLDER — Regular Pentagon Frame (LAYER 2)
+   Enlarged, Prominent, 100% Clean Inside for Character Portrait
+   ============================================================ */
+.hero-placeholder-card {
+  position: relative;
+  z-index: 20; /* Sits between background shards (z:10) and overlapping blades (z:30) */
+  width: 43.5%;
+  max-width: 370px;
+  aspect-ratio: 1 / 1;
+  background: 
+    radial-gradient(circle at 50% 35%, rgba(0, 239, 75, 0.14) 0%, transparent 65%),
+    linear-gradient(160deg, #08173d 0%, #03081c 60%, #01040d 100%);
+  clip-path: polygon(
+    50% 0%,    /* top point */
+    100% 38%,  /* upper-right */
+    81% 100%,  /* lower-right */
+    19% 100%,  /* lower-left */
+    0% 38%     /* upper-left */
+  );
+  box-shadow: 
+    0 0 55px rgba(0, 239, 75, 0.45),
+    inset 0 0 40px rgba(0, 239, 75, 0.18),
+    0 20px 60px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.8rem 0.8rem 1.2rem;
+  cursor: pointer;
+  transition: filter 0.3s ease, box-shadow 0.3s ease; will-change: transform; transform: translateZ(0);
+  user-select: none;
+  /* box-shadow animation optimized for GPU */ will-change: transform;
+}
+
+@keyframes pentagonBreathing {
+  0% {
+    box-shadow: 
+      0 0 45px rgba(0, 239, 75, 0.35),
+      inset 0 0 35px rgba(0, 239, 75, 0.15),
+      0 20px 60px rgba(0, 0, 0, 0.95);
+  }
+  100% {
+    box-shadow: 
+      0 0 65px rgba(0, 239, 75, 0.55),
+      inset 0 0 45px rgba(0, 239, 75, 0.25),
+      0 25px 70px rgba(0, 0, 0, 0.98);
+  }
+}
+
+.hero-placeholder-card:hover {
+  filter: drop-shadow(0 14px 45px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 35px rgba(0, 239, 75, 0.8));
+  transform: scale(1.025);
+}
+
+/* Pentagon SVG border overlay */
+.pentagon-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  filter: drop-shadow(0 0 4px rgba(0, 239, 75, 0.5));
+}
+
+/* Subtle inner ambient glow */
+.hero-placeholder-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+  background: radial-gradient(circle at 50% 40%, rgba(0, 239, 75, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.placeholder-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0, 239, 75, 0.1);
+  border: 1.5px solid rgba(0, 239, 75, 0.6);
+  box-shadow: 0 0 15px rgba(0, 239, 75, 0.3);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes floatSubtle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.placeholder-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.2rem;
+  line-height: 1;
+}
+
+.placeholder-badge {
+  font-family: var(--font-tech);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--blue-neon);
+  background: rgba(0, 239, 75, 0.1);
+  padding: 0.12rem 0.45rem;
+  border: 1px solid rgba(0, 239, 75, 0.3);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.08em;
+}
+
+.placeholder-hint {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(140, 170, 220, 0.7);
+  line-height: 1.3;
+  max-width: 18ch;
+}
+
+.placeholder-crest-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.placeholder-badge-img {
+  width: 78%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(0, 239, 75, 0.55)) drop-shadow(0 0 32px rgba(247, 32, 249, 0.45));
+  animation: emblemPulse 4.5s ease-in-out infinite alternate;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@keyframes emblemPulse {
+  0% { transform: scale(0.97); filter: drop-shadow(0 0 14px rgba(0, 239, 75, 0.45)) drop-shadow(0 0 24px rgba(247, 32, 249, 0.35)); }
+  100% { transform: scale(1.02); filter: drop-shadow(0 0 24px rgba(0, 239, 75, 0.8)) drop-shadow(0 0 38px rgba(247, 32, 249, 0.65)); }
+}
+
+.hero-placeholder-card:hover .placeholder-badge-img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 26px rgba(0, 239, 75, 0.85)) drop-shadow(0 0 44px rgba(247, 32, 249, 0.75));
+}
+
+.placeholder-crest-hint {
+  display: none !important;
+}
+
+/* User image fills the pentagon */
+.hero-user-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+  display: block;
+  z-index: 5;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hero-placeholder-card:hover .hero-user-image {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 16px rgba(0, 239, 75, 0.45));
+}
+
+.hero-user-image.has-image {
+  display: block !important;
+}
+
+/* Hide placeholder guides */
+.placeholder-crest-hint {
+  display: none !important;
+}
+
+.hero-placeholder-card.has-user-image .placeholder-badge,
+.hero-placeholder-card.has-user-image .placeholder-title,
+.hero-placeholder-card.has-user-image .placeholder-hint,
+.hero-placeholder-card.has-user-image .placeholder-icon-wrap,
+.hero-placeholder-card.has-user-image .placeholder-crest-wrap {
+  display: none !important;
+}
+
+/* Hero Text & Right Info Cards */
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-profile-tag {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--blue-neon);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-profile-tag::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--blue-neon);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--blue-neon);
+}
+
+.hero-title-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4.2rem, 9.5vw, 7.8rem);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 
+    1px 1px 0 #087f38,
+    2px 2px 0 #055e29,
+    3px 3px 0 #b408d3,
+    4px 4px 0 #85069d,
+    5px 5px 0 #030408,
+    6px 6px 20px rgba(0, 0, 0, 0.95);
+  animation: heroSlam 0.8s cubic-bezier(0.2, 1.2, 0.3, 1) both;
+}
+
+@keyframes heroSlam {
+  0% { opacity: 0; transform: translateX(50px) skewX(-15deg); }
+  100% { opacity: 1; transform: translateX(0) skewX(0); }
+}
+
+/* Badges (RANK: 01 & 20+ PROJECTS) matching reference sketch */
+.hero-badges-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 135px;
+}
+
+.hero-badge-card {
+  border: 2px solid var(--border-bright);
+  background: linear-gradient(135deg, rgba(12, 18, 30, 0.9) 0%, rgba(6, 8, 16, 0.95) 100%);
+  padding: 0.6rem 1rem;
+  text-align: center;
+  clip-path: polygon(12% 0%, 100% 0%, 100% 85%, 88% 100%, 0% 100%, 0% 15%);
+  position: relative;
+  box-shadow: 0 0 16px rgba(0, 239, 75, 0.35);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.hero-badge-card:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 0 28px rgba(0, 239, 75, 0.65);
+}
+
+.badge-label {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink-secondary);
+}
+
+.badge-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: var(--brand-green);
+  text-shadow: 0 0 16px rgba(0, 239, 75, 0.75);
+}
+
+.hero-desc {
+  font-size: 1.25rem;
+  color: var(--ink-secondary);
+  max-width: 48ch;
+  margin: 1.4rem 0 1.8rem;
+  line-height: 1.4;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.btn-anime {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 2rem;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-emerald) 100%);
+  color: #030509;
+  font-weight: 800;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 239, 75, 0.5);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-anime:hover {
+  background: linear-gradient(135deg, #2bff75 0%, var(--brand-green) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(0, 239, 75, 0.85);
+}
+
+.btn-anime.secondary {
+  background: rgba(8, 12, 22, 0.85);
+  color: var(--brand-titanium);
+  border: 1.5px solid var(--brand-magenta);
+  box-shadow: 0 0 16px rgba(247, 32, 249, 0.35);
+}
+
+.btn-anime.secondary:hover {
+  background: var(--brand-magenta);
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 28px var(--brand-magenta);
+}
+
+/* ==========================================================================
+   PANEL 2 — MY SKILLS (ABOUT) SECTION
+   ========================================================================== */
+#skills,
+#weapon {
+  background: 
+    linear-gradient(180deg, rgba(6, 8, 16, 0.9) 0%, rgba(3, 4, 8, 0.98) 100%);
+  position: relative;
+}
+
+/* Perspective Grid Floor (Technical Arena) */
+.perspective-grid-floor {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 60%;
+  opacity: 0.22;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(0, 239, 75, 0.35) 0 1px, transparent 1px 45px),
+    repeating-linear-gradient(0deg, rgba(247, 32, 249, 0.25) 0 1px, transparent 1px 30px);
+  transform: perspective(600px) rotateX(65deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%);
+}
+
+.weapon-grid {
+  display: grid;
+  grid-template-columns: auto 1.1fr 1.3fr;
+  gap: clamp(1.5rem, 3.2vw, 3rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left: Official JV Precision Tactical Badge Crest */
+.weapon-emblem-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.emblem-display-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.emblem-flip-scene {
+  perspective: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  animation: emblemFloat 3.8s ease-in-out infinite alternate;
+}
+
+.emblem-flipper {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.85, 0.35, 1.2);
+}
+
+.emblem-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.emblem-card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emblem-face-front {
+  transform: rotateY(0deg);
+}
+
+.emblem-face-back {
+  transform: rotateY(180deg);
+}
+
+.jv-tactical-crest-img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 25px rgba(0, 239, 75, 0.45)) drop-shadow(0 0 40px rgba(247, 32, 249, 0.35));
+  transition: transform 0.35s cubic-bezier(0.2, 1.2, 0.3, 1), filter 0.3s;
+}
+
+.emblem-flip-scene:hover .jv-tactical-crest-img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 35px rgba(0, 239, 75, 0.85)) drop-shadow(0 0 55px rgba(247, 32, 249, 0.7));
+}
+
+@keyframes emblemFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(4deg); }
+}
+
+.emblem-rank-tag {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--brand-green);
+  background: rgba(0, 239, 75, 0.1);
+  padding: 0.28rem 0.9rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 239, 75, 0.4);
+  box-shadow: 0 0 14px rgba(0, 239, 75, 0.3);
+  user-select: none;
+}
+
+/* Middle: Personal Introduction & Anime Tactical Attributes */
+.weapon-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Shaded Header Accent Bar matching the artist's sketch */
+.weapon-accent-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.2rem 0.8rem;
+  background: linear-gradient(90deg, rgba(0, 239, 75, 0.25) 0%, rgba(247, 32, 249, 0.12) 100%);
+  border-left: 3px solid var(--blue-neon);
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--blue-neon);
+  margin-bottom: -0.2rem;
+}
+
+.weapon-subtitle {
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.1rem;
+  text-shadow: 0 0 15px rgba(0, 239, 75, 0.5);
+  line-height: 1.05;
+}
+
+.weapon-intro p {
+  color: var(--ink-secondary);
+  font-size: 1.15rem;
+  line-height: 1.48;
+}
+
+/* Tactical Attribute Gauges */
+.weapon-gauges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  background: rgba(8, 16, 40, 0.6);
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(0, 239, 75, 0.2);
+  clip-path: polygon(0% 0%, 97% 0%, 100% 25%, 100% 100%, 3% 100%, 0% 75%);
+}
+
+.gauge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gauge-label {
+  font-family: var(--font-tech);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #c7d2fe;
+  letter-spacing: 0.1em;
+  min-width: 130px;
+}
+
+.gauge-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(14, 25, 58, 0.9);
+  border: 1px solid rgba(0, 239, 75, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #087f38, #00ef4b);
+  box-shadow: 0 0 8px var(--blue-neon);
+}
+
+.gauge-val {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--blue-neon);
+  min-width: 32px;
+  text-align: right;
+}
+
+.weapon-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.weapon-stat-pill {
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(16, 29, 64, 0.75);
+  padding: 0.35rem 0.8rem;
+  border-left: 3px solid var(--blue-neon);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ==========================================================================
+   Right: True Interlocking 4-Piece Jigsaw Puzzle (No Solid Outer Box)
+   Matching the artist sketch with blueprint grid & pointed chevrons
+   ========================================================================== */
+.weapon-puzzle-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 530px;
+  aspect-ratio: 1.08 / 1;
+  justify-self: end;
+  perspective: 1000px;
+}
+
+.puzzle-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: rotateX(7deg) rotateY(-7deg);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.puzzle-container:hover {
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+/* Blueprint technical background grid directly behind puzzle */
+.puzzle-blueprint-grid {
+  position: absolute;
+  top: 55px;
+  left: 95px;
+  width: 320px;
+  height: 320px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 239, 75, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 239, 75, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  border: 1px dashed rgba(0, 239, 75, 0.22);
+  box-shadow: inset 0 0 35px rgba(0, 239, 75, 0.05);
+  z-index: 1;
+}
+
+.puzzle-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 2;
+}
+
+/* Separate 3D Jigsaw Pieces (Exploded view on hover) */
+.puzzle-piece {
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.18, 1.3, 0.3, 1), filter 0.3s;
+}
+
+.piece-tl:hover { transform: translate(-10px, -10px); filter: brightness(1.3) drop-shadow(0 0 16px var(--blue-neon)); }
+.piece-tr:hover { transform: translate(10px, -10px); filter: brightness(1.3) drop-shadow(0 0 18px var(--brand-magenta)); }
+.piece-bl:hover { transform: translate(-10px, 10px); filter: brightness(1.3) drop-shadow(0 0 18px var(--brand-green)); }
+.piece-br:hover { transform: translate(10px, 10px); filter: brightness(1.3) drop-shadow(0 0 16px var(--blue-neon)); }
+
+/* Pointed Chevron HUD Badges with Leader Lines */
+.hud-badge {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 1.1rem;
+  background: rgba(7, 14, 34, 0.94);
+  color: var(--blue-neon);
+  border: 1.5px solid var(--border-bright);
+  box-shadow: 0 0 15px rgba(0, 239, 75, 0.35);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 10;
+}
+
+.hud-badge:hover {
+  background: var(--blue-neon);
+  color: var(--bg-abyss);
+  box-shadow: 0 0 25px var(--blue-neon);
+  transform: scale(1.08);
+}
+
+.badge-uiux {
+  clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+  top: 155px;
+  left: -45px;
+}
+.badge-branding {
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+  top: 75px;
+  right: -35px;
+  border-color: var(--brand-magenta);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(247, 32, 249, 0.4);
+}
+.badge-branding:hover {
+  background: var(--brand-magenta);
+  color: #ffffff;
+  box-shadow: 0 0 26px var(--brand-magenta);
+}
+.badge-dev {
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+  bottom: 95px;
+  right: -45px;
+}
+.badge-graphic {
+  clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+  bottom: 60px;
+  left: -35px;
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+  box-shadow: 0 0 16px rgba(0, 239, 75, 0.35);
+}
+.badge-graphic:hover {
+  background: var(--brand-green);
+  color: #040711;
+  box-shadow: 0 0 26px var(--brand-green);
+}
+
+.leader-line {
+  stroke: var(--blue-neon);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  fill: none;
+  opacity: 0.65;
+  transition: opacity 0.3s, stroke-width 0.3s;
+}
+.puzzle-container:hover .leader-line {
+  opacity: 0.9;
+  stroke-width: 1.8;
+}
+
+.leader-dot {
+  fill: var(--blue-neon);
+  filter: drop-shadow(0 0 4px var(--blue-neon));
+}
+
+/* Tactical In-Page Weapon Card (Displays clicked skill info, NO browser alert) */
+.weapon-tactical-drawer {
+  position: absolute;
+  bottom: -45px;
+  left: 20px;
+  right: 20px;
+  background: rgba(6, 12, 28, 0.95);
+  border: 1px solid var(--border-bright);
+  border-left: 3px solid var(--blue-neon);
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.85);
+  z-index: 15;
+  transition: all 0.3s ease;
+  clip-path: polygon(0% 0%, 96% 0%, 100% 20%, 100% 100%, 4% 100%, 0% 80%);
+}
+
+.tactical-drawer-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tactical-drawer-tools {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: var(--blue-neon);
+  letter-spacing: 0.08em;
+}
+.tactical-drawer-rank {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00ef4b;
+  background: rgba(0, 239, 75, 0.12);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid rgba(0, 239, 75, 0.3);
+}
+
+/* ==========================================================================
+   PANEL 3 — MATCHES (PORTFOLIO) SECTION (FRAGMENTED ANGULAR FRAMES)
+   ========================================================================== */
+#goals {
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(0, 239, 75, 0.18) 0%, transparent 70%),
+    linear-gradient(180deg, #040711 0%, #070e24 100%);
+}
+
+.gallery-stage-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Gallery Navigation Arrows (< and >) */
+.gallery-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px;
+  height: 48px;
+  background: rgba(9, 17, 41, 0.85);
+  border: 1.5px solid var(--border-bright);
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 239, 75, 0.35);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.gallery-arrow-btn:hover {
+  background: var(--blue-neon);
+  color: var(--bg-abyss);
+  box-shadow: 0 0 30px var(--blue-neon);
+  transform: translateY(-50%) scale(1.12);
+}
+
+.gallery-arrow-btn.prev { left: 0; }
+.gallery-arrow-btn.next { right: 0; }
+
+/* ==========================================================================
+   PANEL 3 — 3D GLASS MATCHES (PORTFOLIO) SYSTEM
+   Matches exact layout from Luminary reference with 3D glass aesthetics
+   ========================================================================== */
+.matches-header-flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.sec-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.sec-num-outline {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--blue-neon);
+  text-shadow: 0 0 15px rgba(0, 239, 75, 0.4);
+}
+
+.matches-round-indicator {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-secondary);
+}
+.matches-round-indicator span {
+  color: var(--blue-neon);
+  font-weight: 700;
+}
+
+/* Widescreen Glass Stage */
+.gallery-stage-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matches-glass-canvas-container {
+  width: 100%;
+  max-width: 1360px;
+  position: relative;
+  padding: 0 4rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   PROJECTS SECTION: ENCRYPTED / LOCKED STATE
+   Previews are completely hidden & dormant until Hero crystal shatters
+   ============================================================ */
+
+/* Disable clicks when locked */
+#goals.projects-locked .m-glass-shard-btn {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Hide preview images completely when locked */
+#goals.projects-locked .m-glass-shard-btn image {
+  opacity: 0 !important;
+  filter: blur(14px) brightness(0.15) !important;
+  transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+/* Hide HUD tags when locked */
+#goals.projects-locked .m-glass-shard-btn .m-glass-hud {
+  opacity: 0 !important;
+  transition: opacity 0.6s ease;
+}
+
+/* Dormant glass slab look when locked */
+#goals.projects-locked .m-glass-shard-btn polygon[fill^="url(#mGlass"] {
+  fill: #04091a !important;
+  opacity: 0.92;
+  transition: fill 0.8s ease;
+}
+
+/* Dim pagination dots when locked */
+#goals.projects-locked .matches-dots-wrap {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* High-Tech Cybernetic Lock Overlay */
+.projects-lock-overlay {
+  position: absolute;
+  inset: 0 4rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(4, 9, 24, 0.84) 0%, rgba(2, 5, 14, 0.94) 80%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px dashed rgba(0, 239, 75, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), inset 0 0 35px rgba(0, 239, 75, 0.1);
+  cursor: pointer;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+.lock-shield-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.2rem 2.8rem;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(3, 7, 20, 0.75);
+  border: 1px solid rgba(0, 239, 75, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.lock-icon-cyber {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 239, 75, 0.1);
+  border: 1.5px solid #00ef4b;
+  box-shadow: 0 0 25px rgba(0, 239, 75, 0.55), inset 0 0 15px rgba(0, 239, 75, 0.3);
+  margin-bottom: 1.1rem;
+  animation: lockIconPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes lockIconPulse {
+  0%   { transform: scale(1); box-shadow: 0 0 20px rgba(0, 239, 75, 0.4); }
+  50%  { transform: scale(1.08); box-shadow: 0 0 35px rgba(0, 239, 75, 0.85), 0 0 55px rgba(247, 32, 249, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 239, 75, 0.4); }
+}
+
+.lock-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.85rem;
+  letter-spacing: 2.8px;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 239, 75, 0.75);
+  margin-bottom: 0.35rem;
+}
+
+.lock-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1.4px;
+  color: #dbdadb;
+  margin-bottom: 1.3rem;
+}
+
+.lock-btn-hint {
+  display: inline-block;
+  padding: 0.55rem 1.5rem;
+  background: rgba(0, 239, 75, 0.12);
+  border: 1px solid #00ef4b;
+  color: #00ef4b;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.projects-lock-overlay:hover .lock-btn-hint {
+  background: #00ef4b;
+  color: #030408;
+  box-shadow: 0 0 22px rgba(0, 239, 75, 0.85);
+  transform: translateY(-2px);
+}
+
+.lock-scan-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, #00ef4b, #f720f9, transparent);
+  animation: lockScanLine 2.5s linear infinite;
+}
+
+@keyframes lockScanLine {
+  0%   { transform: translateY(-10px); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(240px); opacity: 0; }
+}
+
+/* ============================================================
+   PROJECTS SECTION: UNLOCKED STATE
+   Triggered when Hero projectile shards impact Section 3
+   ============================================================ */
+
+#goals.projects-unlocked .projects-lock-overlay {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+#goals.projects-unlocked .m-glass-shard-btn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+#goals.projects-unlocked .m-glass-shard-btn image {
+  opacity: 0.85 !important;
+  filter: none !important;
+}
+
+#goals.projects-unlocked .m-glass-shard-btn .m-glass-hud {
+  opacity: 0.92 !important;
+}
+
+#goals.projects-unlocked .matches-dots-wrap {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Power-On Sequence for Project Shards on impact */
+#goals.projects-just-unlocked .m-glass-shard-btn {
+  animation: shardPowerOn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="0"] { animation-delay: 0.05s; }
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="1"] { animation-delay: 0.12s; }
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="2"] { animation-delay: 0.18s; }
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="3"] { animation-delay: 0.24s; }
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="4"] { animation-delay: 0.30s; }
+#goals.projects-just-unlocked .m-glass-shard-btn[data-shard="5"] { animation-delay: 0.36s; }
+
+@keyframes shardPowerOn {
+  0% {
+    filter: brightness(3.5) drop-shadow(0 0 45px #00ef4b);
+    transform: scale(0.96);
+  }
+  40% {
+    filter: brightness(2) drop-shadow(0 0 35px #f720f9);
+    transform: scale(1.025);
+  }
+  100% {
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.85));
+    transform: scale(1);
+  }
+}
+
+/* Impact Unlock Energy Flash Wave */
+.projects-unlock-flash {
+  position: absolute;
+  inset: 0 4rem;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(0, 239, 75, 0.55) 45%, rgba(247, 32, 249, 0.35) 70%, transparent 90%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.projects-unlock-flash.flashing {
+  animation: projectUnlockWave 0.85s cubic-bezier(0.12, 0.9, 0.25, 1) forwards;
+}
+
+@keyframes projectUnlockWave {
+  0%   { opacity: 1; transform: scale(0.6); }
+  50%  { opacity: 0.85; }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+
+/* ============================================================
+   FLYING PROJECTILE SHARDS (HERO -> PROJECTS TRAJECTORY)
+   Radiant crystalline projectiles that fly down the page
+   ============================================================ */
+.flying-shard-projectile {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  width: 32px;
+  height: 52px;
+  clip-path: polygon(50% 0%, 100% 65%, 70% 100%, 0% 75%);
+  filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 35px #ffffff);
+  transition: none;
+  will-change: transform, opacity;
+}
+
+.flying-shard-projectile::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 4px;
+  height: 50px;
+  margin-left: -2px;
+  background: linear-gradient(180deg, transparent, currentColor);
+  filter: blur(1.5px);
+  border-radius: 4px;
+}
+
+.matches-glass-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.85));
+}
+
+/* Individual 3D Glass Shards in SVG */
+.m-glass-shard-btn {
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+  transform-box: fill-box;
+  transform-origin: center center;
+  outline: none;
+}
+
+.m-glass-shard-btn:hover,
+.m-glass-shard-btn:focus-visible {
+  transform: translateY(-5px) scale(1.025);
+  filter: drop-shadow(0 0 16px rgba(0, 239, 75, 0.85)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95)) !important;
+}
+
+.m-glass-shard-btn:hover .m-glass-icon-wrap {
+  filter: drop-shadow(0 0 10px #00ef4b);
+  transform: scale(1.1);
+}
+
+.m-glass-icon-wrap {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Floating HUD Tag — Visible with Tactical Anime HUD Glow */
+.m-glass-hud {
+  opacity: 0.92;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.m-glass-shard-btn:hover .m-glass-hud {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(0, 239, 75, 0.7));
+}
+
+/* Pagination Dots */
+.matches-dots-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.m-round-dot {
+  width: 38px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.m-round-dot.active {
+  background: var(--blue-neon);
+  box-shadow: 0 0 12px var(--blue-neon);
+  width: 52px;
+}
+
+/* Placeholder Graphic inside every Project Frame */
+.shard-placeholder-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--ink-secondary);
+  pointer-events: none;
+  padding: 1rem;
+  text-align: center;
+}
+
+.placeholder-mountain-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--ink-secondary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.3s;
+}
+.match-shard-card:hover .placeholder-mountain-icon {
+  stroke: var(--blue-neon);
+  filter: drop-shadow(0 0 8px var(--blue-neon));
+  transform: scale(1.1);
+}
+
+.shard-info-meta {
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  background: rgba(5, 10, 24, 0.88);
+  padding: 0.5rem 0.8rem;
+  border-left: 3px solid var(--blue-neon);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.shard-category-tag {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-neon);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.shard-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+/* User Image Slot (If replaced later) */
+.shard-user-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inherit;
+  display: none;
+}
+
+/* ==========================================================================
+   PANEL 4 — EVALUATION (SKILLS & CONTACT) SECTION
+   ========================================================================== */
+#next-stage {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 239, 75, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, #060a18 0%, #03060d 100%);
+}
+
+.eval-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  position: relative;
+}
+
+/* Left: Futuristic 3D Skills Radar Chart */
+.eval-radar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radar-chart-wrap {
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+}
+
+.radar-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(0, 239, 75, 0.35));
+}
+
+.radar-grid-line {
+  fill: none;
+  stroke: rgba(0, 239, 75, 0.3);
+  stroke-width: 1.5;
+}
+
+.radar-axis-line {
+  stroke: rgba(247, 32, 249, 0.35);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.radar-polygon-fill {
+  fill: rgba(0, 239, 75, 0.22);
+  stroke: var(--blue-neon);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 10px var(--blue-neon));
+  transform-origin: 200px 180px;
+  transition: transform 1s cubic-bezier(0.2, 1.3, 0.4, 1), fill 0.3s;
+}
+.radar-polygon-fill:hover {
+  fill: rgba(0, 239, 75, 0.45);
+}
+
+.radar-vertex-dot {
+  fill: #ffffff;
+  stroke: var(--blue-neon);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 0.2s;
+}
+.radar-vertex-dot:hover { r: 6; fill: var(--blue-neon); }
+
+.radar-label {
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: var(--ink-primary);
+  text-anchor: middle;
+}
+
+/* Right: TEAM UP?! Contact & Transmission Form */
+.team-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.team-heading {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 7vw, 5.8rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 
+    2px 2px 0 #2a5cff,
+    4px 4px 0 #15399f,
+    6px 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+.team-desc {
+  font-size: 1.2rem;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+  max-width: 44ch;
+}
+
+/* Angular Tech Email Input Box */
+.contact-form-box {
+  display: flex;
+  border: 2px solid var(--border-bright);
+  background: rgba(9, 17, 38, 0.9);
+  box-shadow: 0 0 15px rgba(0, 239, 75, 0.25);
+  max-width: 480px;
+  transition: all 0.3s;
+}
+.contact-form-box:focus-within {
+  border-color: #fff;
+  box-shadow: 0 0 25px rgba(0, 239, 75, 0.6);
+}
+
+.contact-email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--font-tech);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  padding: 0.8rem 1.2rem;
+}
+.contact-email-input::placeholder {
+  color: var(--ink-muted);
+}
+
+.contact-submit-btn {
+  background: var(--blue-neon);
+  color: var(--bg-abyss);
+  border: none;
+  border-left: 2px solid var(--border-bright);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  padding: 0 1.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.contact-submit-btn:hover {
+  background: #ffffff;
+  color: var(--blue-core);
+  box-shadow: 0 0 15px #fff;
+}
+
+.form-feedback-msg {
+  min-height: 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.form-feedback-msg.success { color: var(--blue-neon); text-shadow: 0 0 8px var(--blue-neon); }
+.form-feedback-msg.error { color: #ff4d6d; text-shadow: 0 0 8px #ff4d6d; }
+
+/* Social Icons matching reference sketch (f, t, ig, tg, tk) */
+.social-links-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.social-icon-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--border-tech);
+  background: rgba(12, 21, 48, 0.8);
+  display: grid;
+  place-items: center;
+  color: var(--ink-primary);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.social-icon-btn:hover {
+  background: var(--blue-neon);
+  color: var(--bg-abyss);
+  border-color: var(--blue-neon);
+  box-shadow: 0 0 20px var(--blue-neon);
+  transform: translateY(-4px) scale(1.1);
+}
+
+.social-icon-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.social-icon-btn:hover svg {
+  transform: scale(1.15);
+}
+
+.social-icon-btn.social-fb:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  box-shadow: 0 0 22px rgba(24, 119, 242, 0.85);
+  color: #ffffff;
+}
+
+.social-icon-btn.social-ig:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: #e4405f;
+  box-shadow: 0 0 22px rgba(228, 64, 95, 0.85);
+  color: #ffffff;
+}
+
+.social-icon-btn.social-tk:hover {
+  background: #000000;
+  border-color: #00f2fe;
+  box-shadow: -2px -2px 12px #00f2fe, 2px 2px 12px #ff0050;
+  color: #ffffff;
+}
+
+.social-icon-btn.social-gh:hover {
+  background: #24292e;
+  border-color: #ffffff;
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.75);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  background: var(--chrome-bg);
+  border-top: 1px solid var(--border-tech);
+  padding: 1.5rem;
+  text-align: center;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+}
+
+.footer-brand-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--brand-magenta));
+  transition: transform 0.3s ease;
+}
+
+.footer-brand-wrap:hover .footer-logo-icon {
+  transform: rotate(20deg) scale(1.15);
+}
+
+/* ==========================================================================
+   PROJECT DETAILS MODAL (WHEN A SHARD IS CLICKED)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-modal-card {
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #0c1633 0%, #050a1b 100%);
+  border: 2px solid var(--border-bright);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 239, 75, 0.5);
+  clip-path: polygon(4% 0%, 96% 0%, 100% 4%, 100% 96%, 96% 100%, 4% 100%, 0% 96%, 0% 4%);
+  padding: 2.2rem;
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+.modal-overlay.open .project-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--ink-secondary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close-btn:hover { color: var(--blue-neon); }
+
+.modal-badge {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--blue-neon);
+  margin-bottom: 0.4rem;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+/* Modal Preview Container — "like a square pero mataas yung height" */
+.modal-preview-placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.4rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.modal-preview-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 480px;
+  max-height: 52vh;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 239, 75, 0.55);
+  box-shadow: 0 0 30px rgba(0, 239, 75, 0.25), 0 16px 45px rgba(0, 0, 0, 0.85);
+  background: radial-gradient(circle at center, #07132c 0%, #030611 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.modal-preview-box:hover img {
+  transform: scale(1.03);
+}
+
+.modal-preview-box.modal-video-box {
+  max-width: 620px;
+  height: 380px;
+  background: #000;
+}
+
+.modal-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  border: none;
+  outline: none;
+  display: block;
+}
+
+.modal-preview-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(3, 4, 8, 0.95) 0%, rgba(3, 4, 8, 0.5) 70%, transparent 100%);
+  padding: 10px 16px;
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #00ef4b;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px rgba(0, 239, 75, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-desc {
+  font-size: 1.15rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .weapon-grid { grid-template-columns: 1fr 1fr; }
+  .weapon-emblem-wrap { grid-column: 1 / -1; flex-direction: row; justify-content: center; }
+  .matches-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    padding: 0 2rem;
+  }
+  .m-shard-1, .m-shard-2, .m-shard-3, .m-shard-4, .m-shard-5, .m-shard-6 {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 240px;
+    clip-path: polygon(5% 0%, 95% 0%, 100% 90%, 0% 100%);
+  }
+  .eval-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  body { padding: 0; }
+  .brand-logo { font-size: 1.6rem; padding: 0.5rem 1.8rem 0.5rem 0.8rem; }
+  .site-nav { font-size: 1.2rem; gap: 0.8rem; padding: 0 0.8rem; }
+  .nav-right-wrap { gap: 0.5rem; padding-right: 0.6rem; }
+  .hero-title-wrap { flex-direction: column; gap: 1rem; }
+  .hero-badges-col { flex-direction: row; }
+  .weapon-grid { grid-template-columns: 1fr; }
+  .weapon-puzzle-wrap { justify-self: center; }
+  .matches-mosaic { grid-template-columns: 1fr; padding: 0 1rem; }
+  .gallery-arrow-btn { display: none; }
+  .contact-form-box { flex-direction: column; }
+  .contact-submit-btn { padding: 0.6rem; border-left: none; border-top: 2px solid var(--border-bright); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
